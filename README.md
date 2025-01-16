@@ -47,7 +47,7 @@ Open http://127.0.0.1:8000 in your browser to access the app.
 
 ## Usage
 
-Adding Clients and Invoices: Navigate to the admin panel to create clients and invoices. You can also add invoices and clients through the frontend.
-Generating Invoices: When adding an invoice, a PDF will be generated automatically and saved to the invoices/ directory.
-Sending Email Reminders: If an invoice is overdue, you can send an email reminder from the invoice detail page.
-Downloading PDFs: You can download generated invoices as PDFs from both the invoice list and the invoice detail page.
+Navigate to the admin panel to create clients and invoices. You can also add invoices and clients through the frontend.
+When adding an invoice, a PDF will be generated automatically and saved to the invoices/ directory.
+If an invoice is overdue, you can send an email reminder from the invoice detail page.
+You can download generated invoices as PDFs from both the invoice list and the invoice detail page.
