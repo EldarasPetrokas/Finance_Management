@@ -16,7 +16,7 @@ A Django-based invoice management system for managing clients, invoices, and gen
 
 Clone the repository:
 
-git clone https://github.com/yourusername/Finance_Management.git
+git clone https://github.com/EldarasPetrokas/Finance_Management.git
 
 Navigate to the project directory:
 
