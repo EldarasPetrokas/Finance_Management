@@ -1,0 +1,61 @@
+/* Global styles */
+body {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Dashboard cards */
+.dashboard-card {
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Status indicators */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.status-issued {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.status-paid {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-overdue {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Improved table styling */
+.table-header {
+    background-color: #343a40;
+    color: white;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+    
+    .dashboard-stats {
+        flex-direction: column;
+    }
+}
+
+/* Loading indicator */
+#loading-indicator {
+    padding: 20px;
+} 

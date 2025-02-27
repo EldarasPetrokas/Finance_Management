@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Invoices{% endblock %}
+
+{% block content %}
+<h2>Invoices</h2>
+
+<!-- Add filter dropdown -->
+<div class="row mb-4">
+    <!-- Keep the existing filter -->
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="status-filter">Filter by Status:</label>
+            <select id="status-filter" class="form-control">
+                <option value="">All Invoices</option>
+                <option value="issued">Issued</option>
+                <option value="paid">Paid</option>
+                <option value="overdue">Overdue</option>
+            </select>
+        </div>
+    </div>
+    
+    <!-- Add search box -->
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="search-input">Search Invoices:</label>
+            <div class="input-group">
+                <input type="text" id="search-input" class="form-control" placeholder="Client name or invoice ID...">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" id="search-button">
+                        <i class="fa fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add loading indicator -->
+<div id="loading-indicator" style="display: none;" class="text-center mb-3">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<form method="POST" action="{% url 'mark_as_paid' %}" id="invoice-form">
+    {% csrf_token %}
+    <table class="table table-striped" id="invoice-table">
+        <thead>
+        <tr>
+            <th><a href="#" class="sort-link" data-sort="client">Client Name</a></th>
+            <th>Invoice ID</th>
+            <th><a href="#" class="sort-link" data-sort="amount">Amount</a></th>
+            <th><a href="#" class="sort-link" data-sort="status">Status</a></th>
+            <th>Payment Date</th>
+            <th>Mark as Paid</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for invoice in invoices %}
+        <tr class="{% if invoice.status == 'overdue' %}table-danger{% elif invoice.status == 'paid' %}table-success{% endif %}">
+            <td>{{ invoice.client.name }}</td>
+            <td>
+                <a href="{% url 'invoice_detail' invoice.id %}">
+                    {{ invoice.id }}
+                </a>
+            </td>
+            <td>{{ invoice.sum }}</td>
+            <td>{{ invoice.get_status_display }}</td>
+            <td>{{ invoice.payment_date }}</td>
+            <td>
+                {% if invoice.status != 'paid' %}
+                <input type="checkbox" name="invoice_ids" value="{{ invoice.id }}">
+                {% else %}
+                <span>Paid</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-success mt-3">Mark as Paid</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/invoice_list.js' %}"></script>
+{% endblock %}

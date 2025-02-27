@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice {{ invoice.id }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .invoice-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .invoice-details, .client-details, .items {
+            margin-bottom: 20px;
+        }
+        .invoice-details h2, .client-details h2 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        table th {
+            background-color: #f4f4f9;
+            font-weight: bold;
+        }
+        .total {
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="header">
+            <h1>Invoice</h1>
+            <p>Invoice ID: {{ invoice.id }}</p>
+            <p>Date: {{ invoice.entry_date.date }}</p>
+        </div>
+
+        <div class="client-details">
+            <h2>Client Details</h2>
+            <p><strong>Name:</strong> {{ invoice.client.name }}</p>
+            <p><strong>Email:</strong> {{ invoice.client.email }}</p>
+            <p><strong>Phone:</strong> {{ invoice.client.phone_number }}</p>
+            <p><strong>Address:</strong> {{ invoice.client.address }}</p>
+        </div>
+
+        <div class="invoice-details">
+            <h2>Invoice Details</h2>
+            <table>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>{{ invoice.sum }}</td>
+                </tr>
+            </table>
+            <p><strong>Status:</strong> {{ invoice.get_status_display }}</p>
+            <p><strong>Payment Due:</strong> {{ invoice.payment_date }}</p>
+        </div>
+
+        <div class="total">
+            <p>Total Amount Due: {{ invoice.sum }} EUR</p>
+        </div>
+    </div>
+</body>
+</html>
