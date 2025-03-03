@@ -20,8 +20,8 @@ A Django-based Finance Management System for generating and managing invoices.
    cd Finance_Management
 2. Create a virtual environment:
    python -m venv venv
-   source venv/bin/activate
-   # On Windows use: venv\Scripts\activate
+   On Mac use: source venv/bin/activate
+   On Windows use: venv\Scripts\activate
 3. Install dependencies:
    pip install -r requirements.txt
 4. Apply database migrations:
