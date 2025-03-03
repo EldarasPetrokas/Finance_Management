@@ -5,7 +5,7 @@ A Django-based Finance Management System for generating and managing invoices.
 ## Features
 - Invoice generation and storage
 - SQLite database integration
-- User authentication (if applicable)
+- User authentication
 - Admin panel for managing finances
 
 ## Installation
